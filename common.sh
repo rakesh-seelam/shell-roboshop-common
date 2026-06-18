@@ -10,9 +10,9 @@ N="\e[0m"
 SCRIPT_DIR=$PWD
 SCRIPT_START_TIME=$(date +%s) 
 
-echo "$(date "+%Y-%m-%d %H:%M:%S") | Script execution started at: $(date)" | tee -a $LOG_FILE 
-
 mkdir -p $LOG_FOLDER
+
+echo "$(date "+%Y-%m-%d %H:%M:%S") | Script execution started at: $(date)" | tee -a $LOG_FILE 
 
 check_root(){
 if [ $USER_ID -ne 0 ]; then
@@ -21,18 +21,17 @@ if [ $USER_ID -ne 0 ]; then
 fi
 }
 
-
 VALIDATE(){
     if [ $1 -ne 0 ]; then
-      echo -e $(date "+%Y-%m-%d %H:%M:%S") | "$2: $R FAILURE $N" | tee -a $LOG_FILE
+      echo -e "$(date "+%Y-%m-%d %H:%M:%S") | $2: $R FAILURE $N" | tee -a $LOG_FILE
       exit 1
     else
-      echo -e $(date "+%Y-%m-%d %H:%M:%S") | "$2: $G Success $N" | tee -a $LOG_FILE
+      echo -e "$(date "+%Y-%m-%d %H:%M:%S") | $2: $G Success $N" | tee -a $LOG_FILE
     fi
 }
 
 print_total_time(){
     SCRIPT_END_TIME=$(date +%s) 
     TOTAL_TIME=$((SCRIPT_END_TIME-SCRIPT_START_TIME))
-    echo -e "$(date "+%Y-%m-%d %H:%M:%S") | Script executed in: $G TOTAL_TIME $N" | tee -a $LOG_FILE
+    echo -e "$(date "+%Y-%m-%d %H:%M:%S") | Script executed in: $G $TOTAL_TIME $N" | tee -a $LOG_FILE
 }
