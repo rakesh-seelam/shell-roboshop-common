@@ -2,8 +2,7 @@
 
 source ./common.sh
 APP_NAME=frontend
-SCRIPT_DIR=/usr/share/nginx/html
-
+SCRIPT_DIR=$PWD
 check_root
 
 dnf module list nginx &>>$LOG_FILE
