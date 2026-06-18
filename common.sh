@@ -49,6 +49,18 @@ nodejs_setup(){
     fi
 }
 
+java_setup(){
+    dnf install maven -y &>>$LOG_FILE
+    VALIDATE $? "Installing Maven"
+
+    cd /app
+    mvn clean package &>>$LOG_FILE
+    VALIDATE $? "Installing and Building shipping"
+
+    mv target/shipping-1.0.jar shipping.jar 
+    VALIDATE $? "Moving and Renaming shipping"
+}
+
 app_setup(){
     #Creating system user
     id roboshop &>>$LOG_FILE
