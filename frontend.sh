@@ -9,7 +9,7 @@ check_root
 dnf module list nginx &>>$LOG_FILE
 VALIDATE $? "listing Nginx"
 
-dnf module disable nginx -y
+dnf module disable nginx -y &>>$LOG_FILE
 VALIDATE $? "Disabling default Nginx"
 
 dnf module enable nginx:1.24 -y 
