@@ -1,0 +1,13 @@
+#!/bin/bash
+
+source ./common.sh
+APP_NAME=payment
+
+check_root
+app_setup
+systemd_setup
+
+print_total_time
+
+
+

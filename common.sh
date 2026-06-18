@@ -61,6 +61,15 @@ java_setup(){
     VALIDATE $? "Moving and Renaming shipping"
 }
 
+python_setup(){
+    dnf install python3 gcc python3-devel -y &>>$LOG_FILE
+    VALIDATE $? "Installed Python"
+
+    cd /app 
+    pip3 install -r requirements.txt &>>$LOG_FILE
+    VALIDATE $? "Installing dependencies"
+}
+
 app_setup(){
     #Creating system user
     id roboshop &>>$LOG_FILE
