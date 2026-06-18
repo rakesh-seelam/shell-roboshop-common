@@ -7,8 +7,8 @@ check_root
 
 dnf list installed | grep redis &>>$LOG_FILE
 if [ $? -ne 0 ]; then
-    dnf module disable redis -y &>>$LOG_FILE
-    dnf module enable redis:7 -y
+    dnf module disable redis -y 
+    dnf module enable redis:7 -y &>>$LOG_FILE
     dnf install redis -y &>>$LOG_FILE
     VALIDATE $? "Enabling and installing Redis-7"
 else
@@ -21,3 +21,5 @@ VALIDATE $? "Allowing remote connections"
 systemctl enable redis &>>$LOG_FILE
 systemctl start redis 
 VALIDATE $?  "Enabling and starting Redis"
+
+print_total_time
