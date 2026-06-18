@@ -2,6 +2,7 @@
 
 source ./common.sh
 APP_NAME=catalogue
+MONGODB_HOST=mongodb.rakesh.bond
 
 check_root
 app_setup
