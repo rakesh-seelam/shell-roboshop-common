@@ -41,6 +41,9 @@ nodejs_setup(){
 
         dnf install nodejs -y &>>$LOG_FILE
         VALIDATE $? "Installing nodejs"
+
+        npm install &>>$LOG_FILE
+        VALIDATE $? "Installing Dependencies"
     else 
     echo -e "nodejs is already installed $Y SKIPPING $N"
     fi
@@ -71,9 +74,6 @@ app_setup(){
 
     unzip /tmp/$APP_NAME.zip &>>$LOG_FILE
     VALIDATE $? "Unzipping $APP_NAME code"
-
-    npm install &>>$LOG_FILE
-    VALIDATE $? "Installing Dependencies"
 }
 
 systemd_setup(){
