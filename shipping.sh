@@ -2,7 +2,6 @@
 
 source ./common.sh
 APP_NAME=shipping
-MYSQL_HOST=mysql.rakesh.bond
 
 
 check_root
